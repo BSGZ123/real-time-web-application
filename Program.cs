@@ -1,3 +1,5 @@
+using real_time_web_application.Hubs;
+
 namespace real_time_web_application
 {
     public class Program
@@ -8,6 +10,7 @@ namespace real_time_web_application
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
@@ -27,6 +30,7 @@ namespace real_time_web_application
             app.UseAuthorization();
 
             app.MapRazorPages();
+            app.MapHub<ChatHub>("/chathub");
 
             app.Run();
         }
